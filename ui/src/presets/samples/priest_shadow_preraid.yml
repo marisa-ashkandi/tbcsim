@@ -1,0 +1,179 @@
+class: Priest
+spec: Shadow
+description: Shadow Priest (pre-raid)
+race: Night Elf
+level: 70
+epCategory: preraid
+epSpec: priest_shadow
+
+talents:
+  # Disc talents
+  - name: Meditation
+    rank: 3
+  - name: Inner Focus
+    rank: 1
+
+  # Shadow talents
+  - name: Improved Shadow Word Pain
+    rank: 2
+  - name: Shadow Focus
+    rank: 5
+  - name: Improved Mind Blast
+    rank: 5
+  - name: Mind Flay
+    rank: 1
+  - name: Shadow Weaving
+    rank: 4
+  - name: Focused Mind
+    rank: 3
+  - name: Darkness
+    rank: 5
+  - name: Shadow Power
+    rank: 4
+  - name: Vampiric Touch
+    rank: 1
+  - name: Shadowform
+    rank: 1
+
+# Pre-raid BIS-ish
+gear:
+  mainHand:
+    name: Eternium Runed Blade
+    enchant: Major Spellpower (Weapon)
+    tempEnchant: Superior Wizard Oil
+  offHand:
+    name: Orb of the Souleater
+  rangedTotemLibram:
+    name: The Black Stalk
+  head:
+    name: Spellstrike Hood
+    enchant: Glyph of Power
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+      - Runed Living Ruby
+  neck:
+    name: Natasha's Ember Necklace
+  shoulders:
+    name: Frozen Shadoweave Shoulders
+    enchant: Greater Inscription of the Orb
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+  back:
+    name: CLoak of the Black Void
+  chest:
+    name: Frozen Shadoweave Robe
+    enchant: Major Spirit
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+  wrists:
+    name: Bracers of Havok
+    enchant: Spellpower (Bracer)
+    gems:
+      - Runed Living Ruby
+  hands:
+    name: Tempest's Touch
+    enchant: Major Spellpower (Gloves)
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+  waist:
+    name: Girdle of Ruination
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+  legs:
+    name: Leggings of the Seventh Circle
+    enchant: Runic Spellthread
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+      - Runed Living Ruby
+  feet:
+    name: Frozen Shadoweave Boots
+    enchant: Boar's Speed
+    gems:
+      - Runed Living Ruby
+      - Runed Living Ruby
+  ring1:
+    name: Seer's Signet
+    enchant: Spellpower (Ring)
+  ring2:
+    name: Cobalt Band of Tyrigosa
+    enchant: Spellpower (Ring)
+  trinket1:
+    name: Quagmirran's Eye
+  trinket2:
+    name: Icon of the Silver Crescent
+
+rotation:
+  autoAttack: false
+  precombat:
+    - name: Flask of Pure Death
+    - name: Crunchy Serpent
+
+  combat:
+    # Use a Dark Rune if we've used at least 1500 mana
+    - name: Dark Rune
+      criteria:
+        - type: RESOURCE_MISSING_GTE
+          amount: 1500
+          resourceType: MANA
+    - name: Shadowfiend
+      criteria:
+        - type: RESOURCE_PCT_LTE 
+          pct: 35
+          resourceType: MANA
+    - name: Power Infusion
+    - name: Destruction Potion
+      criteria:
+        # Allow some slush time for debuffs to get rolling before using potions
+        - type: FIGHT_TIME_ELAPSED_GTE
+          seconds: 5
+    - name: Use Active Trinket
+        - name: Berserking
+    - name: Devouring Plague
+    - name: Starshards
+    - name: Vampiric Touch
+      criteria:
+        - type: DEBUFF_DURATION_LTE
+          debuff: Vampiric Touch (DoT)
+          seconds: 1
+    - name: Shadow Word Pain
+      criteria:
+        - type: DEBUFF_DURATION_LTE
+          debuff: Shadow Word Pain (DoT)
+          seconds: 0
+    - name: Inner Focus
+    - name: Mind Blast
+    - name: Shadow Word Death
+    - name: Mind Flay (2 ticks)
+      criteria:
+        - type: ABILITY_COOLDOWN_LTE
+          ability: Mind Blast
+          seconds: 2
+    - name: Mind Flay (3 ticks)
+
+pet:
+  type: Shadowfiend
+  startsActive: false
+
+raidBuffs:
+  - Blessing of Kings
+  - Drums of Battle
+  - Improved Blessing of Wisdom
+  - Improved Mark of the Wild
+  - Improved Seal of the Crusader
+  - Improved Divine Spirit
+
+  - Moonkin Aura
+  - Wrath of Air Totem
+  - Totem of Wrath
+  - Mana Spring Totem
+
+raidDebuffs:
+  - Misery
+  - Judgement of Wisdom
+  - Curse of the Elements

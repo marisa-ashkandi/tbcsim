@@ -1,0 +1,169 @@
+class: Priest
+spec: Smite
+description: Smite Priest (raid)
+race: Night Elf
+level: 70
+epCategory: raid
+epSpec: priest_smite
+
+talents:
+  # Disc talents
+  - name: Meditation
+    rank: 3
+  - name: Inner Focus
+    rank: 1
+  - name: Mental Agility
+    rank: 5
+  - name: Mental Strength
+    rank: 5
+  - name: Force of Will
+    rank: 5
+  - name: Power Infusion
+    rank: 1
+
+  # Holy talents
+  - name: Holy Specialization
+    rank: 5
+  - name: Divine Fury
+    rank: 5
+  - name: Searing Light
+    rank: 2
+  - name: Spiritual Guidance
+    rank: 5
+  - name: Surge of Light
+    rank: 2
+
+# Raid BIS-ish
+gear:
+  mainHand:
+    name: Talon of the Tempest
+    enchant: Major Spellpower (Weapon)
+    tempEnchant: Superior Wizard Oil
+    gems:
+      - Sparkling Star of Elune
+      - Sparkling Star of Elune
+  offHand:
+    name: Jewel of Infinite Possibilities
+  rangedTotemLibram:
+    name: Eredar Wand of Obliteration
+  head:
+    name: Spellstrike Hood
+    enchant: Glyph of Power
+    gems:
+      - Sparkling Star of Elune
+      - Veiled Noble Topaz
+      - Runed Living Ruby
+  neck:
+    name: Brooch of Unquenchable Fury
+  shoulders:
+    name: Soul-Mantle of the Incarnate
+    enchant: Greater Inscription of the Orb
+    gems:
+      - Runed Living Ruby
+      - Sparkling Star of Elune
+  back:
+    name: Drape of the Righteous
+  chest:
+    name: Shroud of the Incarnate
+    enchant: Major Spirit
+    gems:
+      - Veiled Noble Topaz
+      - Sparkling Star of Elune
+      - Sparkling Star of Elune
+  wrists:
+    name: Bands of Rarefied Magic
+    enchant: Spellpower (Bracer)
+  hands:
+    name: Anger-Spark Gloves
+    enchant: Major Spellpower (Gloves)
+    gems:
+      - Veiled Noble Topaz
+      - Veiled Noble Topaz
+  waist:
+    name: Girdle of Ruination
+    gems:
+      - Veiled Noble Topaz
+      - Sparkling Star of Elune
+  legs:
+    name: Spellstrike Pants
+    enchant: Runic Spellthread
+    gems:
+      - Sparkling Star of Elune
+      - Veiled Noble Topaz
+      - Veiled Noble Topaz
+  feet:
+    name: Boots of Foretelling
+    enchant: Boar's Speed
+    gems:
+      - Sparkling Star of Elune
+      - Sparkling Star of Elune
+  ring1:
+    name: Ring of Recurrence
+    enchant: Spellpower (Ring)
+  ring2:
+    name: Band of Crimson Fury
+    enchant: Spellpower (Ring)
+  trinket1:
+    name: Eye of Magtheridon
+  trinket2:
+    name: Icon of the Silver Crescent
+
+rotation:
+  autoAttack: false
+  precombat:
+    - name: Flask of Blinding Light
+    - name: Crunchy Serpent
+
+  combat:
+    # Use a Dark Rune if we've used at least 1500 mana
+    - name: Dark Rune
+      criteria:
+        - type: RESOURCE_MISSING_GTE
+          amount: 1500
+          resourceType: MANA
+    - name: Shadowfiend
+      criteria:
+        - type: RESOURCE_PCT_LTE 
+          pct: 35
+          resourceType: MANA
+    - name: Power Infusion
+    - name: Destruction Potion
+      criteria:
+        # Allow some slush time for debuffs to get rolling before using potions
+        - type: FIGHT_TIME_ELAPSED_GTE
+          seconds: 5
+    - name: Use Active Trinket
+    - name: Berserking
+    - name: Devouring Plague
+    - name: Starshards
+    - name: Shadow Word Pain
+      criteria:
+        - type: DEBUFF_DURATION_LTE
+          debuff: Shadow Word Pain (DoT)
+          seconds: 0
+    - name: Mind Blast
+    - name: Inner Focus
+    - name: Smite
+
+pet:
+  type: Shadowfiend
+  startsActive: false
+
+raidBuffs:
+  - Blessing of Kings
+  - Drums of Battle
+  - Improved Blessing of Wisdom
+  - Improved Mark of the Wild
+  - Improved Seal of the Crusader
+  - Improved Divine Spirit
+
+  - Moonkin Aura
+  - Wrath of Air Totem
+  - Totem of Wrath
+  - Mana Spring Totem
+  - Vampiric Touch (1000 DPS)
+
+raidDebuffs:
+  - Misery
+  - Judgement of Wisdom
+  - Curse of the Elements

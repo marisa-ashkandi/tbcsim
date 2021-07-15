@@ -55,7 +55,8 @@ abstract class Proc {
 
         // Damage types
         PHYSICAL_DAMAGE,
-        HOLY_DAMAGE,
+        HOLY_DAMAGE_NON_PERIODIC,
+        HOLY_DAMAGE_PERIODIC,
         FIRE_DAMAGE_NON_PERIODIC,
         FIRE_DAMAGE_PERIODIC,
         NATURE_DAMAGE,
@@ -63,6 +64,7 @@ abstract class Proc {
         SHADOW_DAMAGE_PERIODIC,
         SHADOW_DAMAGE_NON_PERIODIC,
         PHYSICAL_DAMAGE_PERIODIC,
+        ARCANE_DAMAGE_PERIODIC,
         ARCANE_DAMAGE,
 
         // Mechanics
@@ -73,6 +75,8 @@ abstract class Proc {
         HUNTER_CAST_KILL_COMMAND,
 
         MAGE_ANY_SCORCH,
+
+        SMITE_CAST,
 
         PRIEST_TICK_SHADOW_WORD_PAIN,
 
